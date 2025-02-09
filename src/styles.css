@@ -76,6 +76,24 @@ h1 {
   filter: brightness(0) invert(1);
 }
 
+.copy-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.copied-text {
+  color: var(--color-neon-green);
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.copied-text.active {
+  opacity: 1;
+}
+
 .password-settings {
   background-color: var(--color-dark-grey);
   padding: 2rem;
@@ -262,4 +280,99 @@ h1 {
 .generate-btn:hover img {
   filter: invert(88%) sepia(29%) saturate(1000%) hue-rotate(84deg)
     brightness(104%) contrast(104%);
+}
+
+/* Tablet Styles */
+@media (max-width: 768px) {
+  .container {
+    max-width: 450px;
+    padding: 1rem;
+  }
+
+  #password-output {
+    font-size: 1.5rem;
+  }
+
+  .password-settings {
+    padding: 1.5rem;
+  }
+
+  .length-value {
+    font-size: 1.25rem;
+  }
+
+  .strength-meter {
+    padding: 1.25rem;
+  }
+
+  .bar {
+    width: 8px;
+    height: 24px;
+  }
+}
+
+/* Mobile Styles */
+@media (max-width: 375px) {
+  body {
+    padding: 1rem;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  h1 {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .password-display {
+    padding: 1rem;
+  }
+
+  #password-output {
+    font-size: 1.25rem;
+  }
+
+  .copy-wrapper {
+    gap: 0.5rem;
+  }
+
+  .copied-text {
+    font-size: 0.75rem;
+  }
+
+  .password-settings {
+    padding: 1rem;
+  }
+
+  .char-length {
+    margin-bottom: 1.5rem;
+  }
+
+  .checkbox-container {
+    gap: 1rem;
+    font-size: 0.875rem;
+  }
+
+  .checkmark {
+    height: 18px;
+    width: 18px;
+  }
+
+  .strength-meter {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .bar {
+    width: 6px;
+    height: 20px;
+  }
+
+  .generate-btn {
+    padding: 1rem;
+    font-size: 1rem;
+  }
 }

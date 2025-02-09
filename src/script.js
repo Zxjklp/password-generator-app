@@ -1,6 +1,8 @@
 const lengthSlider = document.getElementById("length-slider");
 const lengthValue = document.querySelector(".length-value");
 const passwordOutput = document.getElementById("password-output");
+const generateBtn = document.querySelector(".generate-btn");
+const copyBtn = document.querySelector(".copy-btn");
 
 // Update the slider fill and value display
 function updateSlider() {
@@ -64,3 +66,72 @@ checkboxes.forEach((checkbox) => {
 });
 
 updateStrengthMeter();
+
+// Character sets for password generation
+const charSets = {
+  uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  lowercase: "abcdefghijklmnopqrstuvwxyz",
+  numbers: "0123456789",
+  symbols: "!@#$%^&*()_+-=[]{}|;:,.<>?",
+};
+
+function generatePassword() {
+  const length = parseInt(lengthSlider.value);
+
+  // If length is 0, clear the password and return
+  if (length === 0) {
+    passwordOutput.value = "";
+    return;
+  }
+
+  // Get selected character sets
+  let chars = "";
+  if (document.getElementById("uppercase").checked) chars += charSets.uppercase;
+  if (document.getElementById("lowercase").checked) chars += charSets.lowercase;
+  if (document.getElementById("numbers").checked) chars += charSets.numbers;
+  if (document.getElementById("symbols").checked) chars += charSets.symbols;
+
+  // If no character sets selected, return
+  if (!chars) {
+    passwordOutput.value = "";
+    return;
+  }
+
+  // Generate password
+  let password = "";
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * chars.length);
+    password += chars[randomIndex];
+  }
+
+  // Update password display
+  passwordOutput.value = password;
+}
+
+// Add click event listener to generate button
+generateBtn.addEventListener("click", generatePassword);
+
+async function copyToClipboard() {
+  const password = passwordOutput.value;
+  const copiedText = document.querySelector(".copied-text");
+
+  // Don't copy if password is empty or input is grayed out
+  if (!password || passwordOutput.classList.contains("grayed-out")) {
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText(password);
+    // Show copied text
+    copiedText.classList.add("active");
+    // Hide after 2 seconds
+    setTimeout(() => {
+      copiedText.classList.remove("active");
+    }, 2000);
+  } catch (err) {
+    console.error("Failed to copy password: ", err);
+  }
+}
+
+// Add click event listener to copy button
+copyBtn.addEventListener("click", copyToClipboard);
