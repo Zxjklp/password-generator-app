@@ -20,8 +20,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [(https://github.com/Zxjklp/password-generator-app)]
-- Live Site URL: [Add live site URL here]
+- [Solution URL](https://github.com/Zxjklp/password-generator-app)
+- [Live Site URL](https://zxjklp.github.io/password-generator-app/)
 
 ## My process
 
