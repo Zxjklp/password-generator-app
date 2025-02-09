@@ -53,16 +53,6 @@ Users should be able to:
 - Building responsive layouts
 - Handling user interactions and providing feedback
 
-### Continued development
-
-Future improvements could include:
-
-- Password history
-- Additional character sets
-- Password strength requirements
-- Save password feature
-- Password strength criteria display
-
 ### Useful resources
 
 - [MDN Web Docs](https://developer.mozilla.org) - Documentation for Clipboard API and JavaScript methods
