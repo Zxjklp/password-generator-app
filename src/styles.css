@@ -6,6 +6,7 @@
   font-style: normal;
 }
 
+/* Hide elements visually but keep them accessible to screen readers */
 .sr-only {
   position: absolute;
   width: 1px;

@@ -23,8 +23,7 @@ function updateSlider() {
 lengthSlider.value = 0;
 updateSlider();
 
-// Initial update and event listener
-updateSlider();
+// Add event listener
 lengthSlider.addEventListener("input", updateSlider);
 
 const strengthText = document.querySelector(".strength-text");
@@ -43,7 +42,19 @@ function updateStrengthMeter() {
   const checkedCount = Array.from(checkboxes).filter(
     (checkbox) => checkbox.checked
   ).length;
-  const strength = strengthLevels[checkedCount];
+  const passwordLength = parseInt(lengthSlider.value);
+
+  // Determine strength level
+  let strengthLevel;
+  if (passwordLength === 0) {
+    strengthLevel = 0;
+  } else if (passwordLength < 8) {
+    strengthLevel = 1;
+  } else {
+    strengthLevel = checkedCount; 
+  }
+
+  const strength = strengthLevels[strengthLevel];
 
   // Update strength text
   strengthText.textContent = strength.text;
@@ -66,6 +77,9 @@ checkboxes.forEach((checkbox) => {
 });
 
 updateStrengthMeter();
+
+// Add slider input event listener for strength updates
+lengthSlider.addEventListener("input", updateStrengthMeter);
 
 // Character sets for password generation
 const charSets = {
