@@ -20,7 +20,7 @@ Users should be able to:
 
 ### Links
 
-- [Solution](https://github.com/Zxjklp/password-generator-app)
+- [Solution](https://www.frontendmentor.io/solutions/password-generator-app-hwmNLfB_uF)
 - [Live Site URL](https://zxjklp.github.io/password-generator-app/)
 
 ## My process
